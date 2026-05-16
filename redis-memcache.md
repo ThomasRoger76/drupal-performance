@@ -80,8 +80,9 @@ $settings['redis.connection']['prefix'] = 'drupal_monsite_';
 $settings['cache_prefix']['default'] = getenv('APP_ENV', 'prod') . '_';
 
 // 5. Configuration avancée du module Redis
-$settings['redis']['options']['compression'] = FALSE;  // Désactiver si CPU limité
-$settings['redis']['options']['serializer'] = 'PhpRedis::SERIALIZER_PHP';
+// Options de sérialisation (via services.yml ou paramètres de connexion)
+// Voir la documentation du module drupal/redis pour les options avancées
+// Les paramètres varient selon la version du module — préférer la config UI
 ```
 
 ### Vérifier la connexion Redis
