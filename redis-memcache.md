@@ -14,9 +14,13 @@ description: Configuration de Redis et Memcache comme backends de cache Drupal -
 | Clustering | ✅ Redis Cluster | ✅ limité |
 | Module Drupal | `drupal/redis` | `drupal/memcache` |
 | Extension PHP | `phpredis` ou `predis` | `php-memcached` |
-| Recommandé | ✅ pour Drupal | ⚠️ si déjà en place |
+| Adoption terrain FR | ⚠️ moins courant | ✅ très répandu (OVH, Hetzner) |
+| Recommandé | ✅ nouveaux projets | ✅ si fourni par l'hébergeur |
 
-**Recommandation :** Redis dans tous les nouveaux projets.
+**Recommandation :**
+- **Memcache** : choix dominant en agence française — disponible nativement sur la plupart des hébergeurs mutualisés et VPS (OVH, Hetzner, Infomaniak). Configuration simple, zéro friction.
+- **Redis** : préférable quand disponible (meilleur monitoring, persistance optionnelle, support multi-site). À privilégier sur les nouveaux projets avec contrôle total de l'infra.
+- **APCu** : toujours en complément (bins `bootstrap` et `discovery`) sur les deux configurations.
 
 ---
 
