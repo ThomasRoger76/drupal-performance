@@ -309,6 +309,40 @@ function mon_theme_preprocess_html(array &$variables): void {
 
 ---
 
+## AdvAgg — Optimisation Avancée CSS/JS
+
+Le module `drupal/advagg` (Advanced CSS/JS Aggregation) améliore l'agrégation native Drupal.
+
+```bash
+composer require drupal/advagg
+drush en advagg -y
+# Configuration : /admin/config/development/performance/advagg
+```
+
+**Ce qu'advagg apporte vs l'agrégation Drupal native :**
+
+| Feature | Drupal natif | advagg |
+|---------|-------------|--------|
+| Agrégation | ✅ | ✅ + fichiers plus petits |
+| Minification JS | ✅ basique | ✅ JSMin/Terser |
+| Minification CSS | ✅ basique | ✅ CSSMin |
+| Subresource Integrity | ❌ | ✅ (SHA hash sur les assets) |
+| Cache busting intelligent | ❌ | ✅ hash du contenu |
+| HTTP/2 Server Push hints | ❌ | ✅ optionnel |
+| CDN rewriting | ❌ | ✅ optionnel |
+
+```php
+// AdvAgg avec CDN — réécrire les URLs CSS/JS vers un CDN
+// /admin/config/development/performance/advagg/cdn
+// CDN URL : https://cdn.mon-site.com
+
+// AdvAgg Subresource Integrity — sécurité renforcée
+// Chaque asset CSS/JS reçoit un hash SHA-384 en attribut integrity
+// → Protection contre les attaques CDN supply chain
+```
+
+---
+
 ## Audit Performance Drupal — Checklist
 
 ```bash
